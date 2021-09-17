@@ -19,4 +19,6 @@ Checklist:\
 [X] Password with users chosen criteria generated and displayed on the webpage\
 [X] Created a live link on GitHUB
 
-![Screenshot of promt 1, asking for length](imgs/Capture1_AskingUserForLength.PNG "This screenshot of asking the user for length")
+![Screenshot of promt 1, asking for length](imgs/Capture1_AskingUserForLength.PNG)
+This screenshot shows the interface asking the user to insert a password length
+
