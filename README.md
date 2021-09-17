@@ -1,5 +1,6 @@
 Name: Nikhil Kharbanda
 Project: Code Generator
+URL to project: https://nikhil-kharbanda.github.io/UofTBootcamp_PasswordGenerator/
 Due: September 17, 2021
 
 In this assignment, I had made a password generator. 
