@@ -1,13 +1,13 @@
-let passwordLength;
+let passwordLength;   //set the length of the password
 
-//Confirm User Choices
-var confirmUpperCase;
-var confirmLowerCase;
-var confirmNumber;
-var confirmSpecial;
+//Confirm User Choices:
 
-/*Got list of special characters online*/
+var confirmUpperCase; //To confirm if uppercase
+var confirmLowerCase; //To confirm if lowercase
+var confirmNumber;    //To confirm if numbers
+var confirmSpecial;   //To confirm if special characters
 
+//create an array for lowercase values
 lowerCase = [
   "a",
   "b",
@@ -37,11 +37,17 @@ lowerCase = [
   "z",
 ];
 
+//create function to eventually take lower case values and change them to upper. Beats making a new array
+//This fuction takes parameter x (the array) and changes the value to an uppercase
 var toUpper = function (x) {
   return x.toUpperCase();
 };
+
+//calling above function to take the lowercase array and change it to uppercase.
+//I use the map tool, and use the function created above so I can map out each element automatically
 upperCase = lowerCase.map(toUpper);
 
+//created an array of special chars
 let specialChar = [
   "!",
   "#",
@@ -65,8 +71,10 @@ let specialChar = [
   "~",
 ];
 
+//created an array of numbers
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+//all the characters that can be in possible password
 var userChoices = [];
 
 // Assignment Code
@@ -83,17 +91,26 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+//created function that gets called in the writePassword function
 function generatePassword() {
+  //ask the user as a promt. Finding out how many characters should be in generated password
   passwordLength = prompt(
     "How many characters would you like your password? Choose between 8 and 128"
   );
   console.log("Password length " + passwordLength);
 
+  //if user just hits 'OK' while promt is empty, make them enter a valid input
   if (!passwordLength) {
     alert("A value is required");
+
+  //If the password is less than 8 OR greater than 128, make them enter another password length within the proper range
   } else if (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("You must choose between 8 and 128");
     console.log("Password Value Entered: " + passwordLength);
+  
+  //When the password length is acceptable, ask the user what they would like in their password.
+  //Asking the user if they want lowercase, uppercase, numbers, special chars.
+  //Log each answer
   } else {
     confirmLowerCase = confirm("Lower Case Values?");
     console.log("Lower case " + confirmLowerCase);
@@ -105,6 +122,7 @@ function generatePassword() {
     console.log("Special " + confirmSpecial);
   }
 
+  //If they selected nothing (kept hitting cancel), alert the user to needed to select at least 1 criteria and restart
   if (
     !confirmLowerCase &&
     !confirmUpperCase &&
@@ -114,40 +132,45 @@ function generatePassword() {
     userChoices = alert("Must select atleast 1 criteria");
   }
 
+  //if the user wants special characters, attach the specialChar array to the userChoices array
   if (confirmSpecial) {
     // userChoices = specialChar;
     userChoices = userChoices.concat(specialChar);
   }
 
+  //if the user wants number characters, attach the number array to the userChoices array
   if (confirmNumber) {
     // userChoices = numbers;
     userChoices = userChoices.concat(numbers);
   }
 
+  //if the user wants uppercase characters, attach the uppercase array to the userChoices array
   if (confirmUpperCase) {
     // userChoices = upperCase;
     userChoices = userChoices.concat(upperCase);
   }
 
+  //if the user wants lowercase characters, attach the specialChar array to the userChoices array
   if (confirmLowerCase) {
     // userChoices = lowerCase;
     userChoices = userChoices.concat(lowerCase);
   }
 
-  console.log(
-  userChoices
-  );
+  //Log all the values that the user could potentially have in their new password
+  console.log(userChoices);
 
+  //create a blank password array. This is where random elements would get inserted and that would form the new array.
   var passwordBlank = [];
 
-  //TODO//
+  //this for loop repeates itself until it reaches the password length. 
+  //During that time, it generates a new random element from the userChoices array (the array that contains all possible values) and appends it to the end of the passwordBlank array.
   for(var i = 0; i < passwordLength; i++){
     var element = userChoices[Math.floor(Math.random() * userChoices.length)];
     passwordBlank.push(element);
     console.log("Created Password");
   }
 
-
+  //returning the password
   var password = passwordBlank.join("");
   console.log("The password created is: " + password);
   return password;
