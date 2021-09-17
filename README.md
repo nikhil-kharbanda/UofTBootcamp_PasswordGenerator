@@ -22,3 +22,8 @@ Checklist:\
 ![Screenshot of promt 1, asking for length](imgs/Capture1_AskingUserForLength.PNG)
 This screenshot shows the interface asking the user to insert a password length
 
+![Screenshot of promt 1, asking for length](imgs/Capture2_AskingUserForCriteria.PNG)
+This screenshot shows the interface asking the user for the criteria the password should meet
+
+![Screenshot of promt 1, asking for length](imgs/Capture3_DisplayingGeneratedPassword.PNG)
+This screenshot shows the interface showing the user a generated password
