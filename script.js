@@ -75,7 +75,7 @@ let specialChar = [
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 //all the characters that can be in possible password
-var userChoices = [];
+var userChoicesChars = [];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -123,56 +123,47 @@ function generatePassword() {
   }
 
   //If they selected nothing (kept hitting cancel), alert the user to needed to select at least 1 criteria and restart
-  if (
-    !confirmLowerCase &&
-    !confirmUpperCase &&
-    !confirmNumber &&
-    !confirmSpecial
-  ) {
-    userChoices = alert("Must select atleast 1 criteria");
+  if (!confirmLowerCase && !confirmUpperCase && !confirmNumber && !confirmSpecial) {
+    userChoicesChars = alert("Must select atleast 1 criteria");
   }
 
-  //if the user wants special characters, attach the specialChar array to the userChoices array
-  if (confirmSpecial) {
-    // userChoices = specialChar;
-    userChoices = userChoices.concat(specialChar);
+  //if the user wants special characters, attach the specialChar array to the userChoicesChars array
+  if (confirmSpecial) { 
+    userChoicesChars= userChoicesChars.concat(specialChar);
   }
 
-  //if the user wants number characters, attach the number array to the userChoices array
+  //if the user wants number characters, attach the number array to the userChoicesChars array
   if (confirmNumber) {
-    // userChoices = numbers;
-    userChoices = userChoices.concat(numbers);
+    userChoicesChars= userChoicesChars.concat(numbers);
   }
 
-  //if the user wants uppercase characters, attach the uppercase array to the userChoices array
+  //if the user wants uppercase characters, attach the uppercase array to the userChoicesChars array
   if (confirmUpperCase) {
-    // userChoices = upperCase;
-    userChoices = userChoices.concat(upperCase);
+    userChoicesChars = userChoicesChars.concat(upperCase);
   }
 
-  //if the user wants lowercase characters, attach the specialChar array to the userChoices array
+  //if the user wants lowercase characters, attach the specialChar array to the userChoicesChars array
   if (confirmLowerCase) {
-    // userChoices = lowerCase;
-    userChoices = userChoices.concat(lowerCase);
+    userChoicesChars= userChoicesChars.concat(lowerCase);
   }
 
   //Log all the values that the user could potentially have in their new password
-  console.log(userChoices);
+  console.log(userChoicesChars);
 
   //create a blank password array. This is where random elements would get inserted and that would form the new array.
-  var passwordBlank = [];
+  var generatedPassword = [];
 
   //this for loop repeates itself until it reaches the password length. 
-  //During that time, it generates a new random element from the userChoices array (the array that contains all possible values) and appends it to the end of the passwordBlank array.
+  //During that time, it generates a new random element from the userChoicesChars array (the array that contains all possible values) and appends it to the end of the passwordBlank array.
   for(var i = 0; i < passwordLength; i++){
-    var element = userChoices[Math.floor(Math.random() * userChoices.length)];
-    passwordBlank.push(element);
+    var element = userChoicesChars[Math.floor(Math.random() * userChoicesChars.length)];
+    generatedPassword.push(element);
     console.log("Created Password");
   }
 
   //returning the password
-  var password = passwordBlank.join("");
-  console.log("The password created is: " + password);
-  return password;
+  var passwordDisplayed = generatedPassword.join("");
+  console.log("The password created is: " + passwordDisplayed);
+  return passwordDisplayed;
 }
 
